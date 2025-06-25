@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .sheen {
+    position: relative;
+    overflow: hidden;
+  }
+  .sheen::before {
+    content: '';
+    position: absolute;
+    left: -60%;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent 60%, #fff8 85%, transparent 100%);
+    z-index: 1;
+    transition: left 0.7s;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  .sheen-animate::before {
+    animation: sheen 1.1s linear;
+  }
+  /* Animation delay helpers */
+  .fade-delay-100 { animation-delay: 0.1s; }
+  .fade-delay-200 { animation-delay: 0.2s; }
+  .fade-delay-300 { animation-delay: 0.3s; }
+  .fade-delay-400 { animation-delay: 0.4s; }
+  .fade-delay-500 { animation-delay: 0.5s; }
+  .fade-delay-600 { animation-delay: 0.6s; }
+  /* Add "no-overflow-x" utility for mobile */
+  .no-overflow-x {
+    overflow-x: hidden !important;
+  }
+
+  /* Roadmap Timeline Styles */
+  .roadmap-bar {
+    z-index: 9;
+    width: 3px;
+    border-radius: 9999px;
+    opacity: 1;
+    background: linear-gradient(to bottom, #6366f144, #eef2ff 75%);
+  }
+  .roadmap-dot {
+    width: 2.1rem;
+    height: 2.1rem;
+    min-width: 2.1rem;
+    min-height: 2.1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    margin-bottom: -5px;
+    box-shadow: 0 1.5px 13px -1px #6366f122;
+    position: relative;
+    z-index: 10;
+  }
+  .roadmap-connector {
+    min-height: 38px;
+    height: 44px;
+    max-height: 48px;
+    margin-bottom: -5px;
+    margin-top: -5px;
+    background-image: linear-gradient(to bottom, #818cf833 33%, #dbeafe 100%);
+    opacity: .9;
+  }
+  .roadmap-stepnum {
+    @apply text-accent font-bold;
+    font-size: 1.15rem;
+    margin-right: 2px;
+  }
+
+  /* Sticky CTA Button Animations */
+  .stickycta-show {
+    animation: slide-up-pop 0.38s cubic-bezier(.45,.01,.54,1) both;
+  }
+  .stickycta-hide {
+    animation: slide-down-fade 0.36s cubic-bezier(.69,.21,.81,1) both;
+  }
+  @keyframes slide-up-pop {
+    from { opacity: 0; transform: translateY(80px) scale(.95);}
+    70%  { opacity: 1; transform: translateY(-8px) scale(1.05);}
+    to   { opacity: 1; transform: translateY(0) scale(1);}
+  }
+  @keyframes slide-down-fade {
+    0% { opacity: 1; transform: translateY(0);}
+    100% { opacity:0; transform: translateY(76px) scale(.95);}
+  }
+
+  /* Animate connector line (grows downwards) */
+  .animate-grow-line {
+    animation: growLine .65s cubic-bezier(.5,.9,.2,1) both;
+  }
+  @keyframes growLine {
+    from { height: 0; opacity:.1; }
+    to   { height: 44px; opacity:1; }
+  }
+
+  /* Add fade in/out for sticky CTA */
+  .stickycta-fade {
+    will-change: opacity;
+    pointer-events: none;
+  }
+  .stickycta-fadein {
+    animation: stickycta-fadein .4s ease-in-out forwards;
+    opacity: 1;
+  }
+  .stickycta-fadeout {
+    animation: stickycta-fadeout .4s ease-in-out forwards;
+    opacity: 0;
+  }
+  @keyframes stickycta-fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes stickycta-fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+  }
+}
+
+@layer base {
+  * { @apply border-zinc-200; }
+  body { @apply bg-white text-zinc-900 font-sans; }
+}
+
+/* Add custom global spacing helpers for vertical rhythm */
+.section-padding {
+  @apply px-5 sm:px-8;
+}

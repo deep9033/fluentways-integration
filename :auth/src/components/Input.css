@@ -1,0 +1,126 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.input-label {
+  font-weight: 500;
+  color: var(--gray-700);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.input-required {
+  color: var(--error);
+  font-weight: 600;
+}
+
+.input {
+  padding: var(--spacing-3) var(--spacing-4);
+  border: 2px solid var(--gray-300);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
+  background: var(--white);
+  color: var(--gray-900);
+  min-height: 48px;
+}
+
+.input::placeholder {
+  color: var(--gray-400);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+}
+
+.input:hover:not(.input--disabled):not(:focus) {
+  border-color: var(--gray-400);
+}
+
+/* Full width */
+.input--full-width {
+  width: 100%;
+}
+
+/* Error state */
+.input--error {
+  border-color: var(--error);
+}
+
+.input--error:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgb(239 68 68 / 0.1);
+}
+
+.input-error {
+  color: var(--error);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+/* Disabled state */
+.input--disabled {
+  background: var(--gray-100);
+  color: var(--gray-500);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.input--disabled:hover {
+  border-color: var(--gray-300);
+}
+
+/* Success state */
+.input--success {
+  border-color: var(--success);
+}
+
+.input--success:focus {
+  border-color: var(--success);
+  box-shadow: 0 0 0 3px rgb(16 185 129 / 0.1);
+}
+
+/* Input with icon */
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .input {
+  padding-left: 48px;
+}
+
+.input-icon {
+  position: absolute;
+  left: var(--spacing-4);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.input:focus + .input-icon {
+  color: var(--primary-color);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .input {
+    min-height: 44px;
+    padding: var(--spacing-3) var(--spacing-3);
+  }
+  
+  .input-with-icon .input {
+    padding-left: 44px;
+  }
+  
+  .input-icon {
+    left: var(--spacing-3);
+  }
+} 
